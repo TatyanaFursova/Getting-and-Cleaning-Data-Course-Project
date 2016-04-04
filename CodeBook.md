@@ -46,8 +46,7 @@ Result dataframe: "a_data"
 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 Melt "a_data" setting two IDs - "Activity" and "subject" using Melt-function (reshape - package). 
 Transitional result dataframe: "m_data"
-Group "m_data" by "Activity", "subject", "variable" - columns using group_by - function (dplyr-package). 
-Transitional result dataframe: "g_data"
-Summarize "g_data" using mean-function on "Value"-column. Rename and arrange columns. Write result to .txt -file
+Cast "m_data" by "Activity", "subject", "variable" - columns using Cast - function (reshape-package). 
+Transitional result dataframe: "s_data" Rename and arrange columns. Write result to .txt -file
 Result dataframe: s_data
 
