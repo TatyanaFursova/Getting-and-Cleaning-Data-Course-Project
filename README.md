@@ -9,4 +9,7 @@ run_analysis - is the function without any parameters. It reads data from the di
     4. Appropriately labels the data set with descriptive variable names. (dt - dataframe)
     5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject. (s_data dataframe)
     
-    
+    run_analysis function also containes everuy step comments
+    tidy.txt - s_data dataframe for part 5 of the instruction. 
+    ms_tidy.txt - ms_data dataframe for part 2 of the instruction.
+    a_data.txt - a_data dataframe for part 3 of the instruction.
