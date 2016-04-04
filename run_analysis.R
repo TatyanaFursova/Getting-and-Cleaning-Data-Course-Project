@@ -40,10 +40,9 @@ run_analysis<-function(){
 #5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.	
 
 	m_data<-melt(a_data, id=c("Activity", "subject")) #Melt dataframe my two IDs- "Activity" and "subject, send the result to a new dataframe
-	g_data<-group_by(m_data, Activity, subject, variable)#Group  dataframe by three groups -  "Activity", "Subject", "variable", send the result to a new dataframe 
-	s_data<-summarize(g_data, Average=mean(value)) #Summirize dataframe using mean-function on "Value"-variable, wend the result to a new dataframe
+	s_data <- cast(m_data, Activity + subject ~ variable, mean) #Cast m_data
 	s_data<-merge(s_data, act, by.x = "Activity", by.y = "V1") #Add a column with activity names
-	s_data<-select(s_data, V2, subject, variable, Average)#Order columns in appropriate range
+	s_data<-select(s_data, V2, subject, 3:82)#Order columns in appropriate range
 	colnames(s_data)[1]<-"Activity" #Rename column
 	write.table(s_data, file="./getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/tidy.txt", row.names = FALSE)# Write data to the .txt - file on my workplace	
 }
