@@ -20,6 +20,7 @@ run_analysis<-function(){
 	m_data<-dt[,grepl('mean()', names(dt))] #read to a new dataframe variables with names that contain "mean()"
 	s_data<-dt[,grepl('std()', names(dt))] #read to a new dataframe variables with names that contain "std()"
 	ms_data<-cbind(m_data, s_data) #combine "mean()" and "std()" dataframes
+	write.table(ms_data, file="./getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/ms_tidy.txt", row.names = FALSE) #Write mean-std data set to the workspace
 
 #3. Uses descriptive activity names to name the activities in the data set
 
@@ -34,7 +35,8 @@ run_analysis<-function(){
 	act<-read.table("./getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/activity_labels.txt") #read activity names tada set
 	a_data<-merge(f_data, act, by.x = "Activity", by.y = "V1")# Merge mean-std-dataframe with activity name dataframe by "activity code", send data to new dataframe 
 	colnames(a_data)[82]<-"Activity" # Rename variable 
-	
+	write.table(a_data, file="./getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/a_data.txt", row.names = FALSE)#Write mean-std data set with "subject" and "Activity" columns to the workspace
+
 #5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.	
 
 	m_data<-melt(a_data, id=c("Activity", "subject")) #Melt dataframe my two IDs- "Activity" and "subject, send the result to a new dataframe
